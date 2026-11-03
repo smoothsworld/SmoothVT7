@@ -1,0 +1,56 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS (VST3, AU, Standalone — Universal)
+            os: macos-14
+            configure: -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+          - name: Windows (VST3, Standalone)
+            os: windows-latest
+            configure: ""
+          - name: Linux (VST3, Standalone)
+            os: ubuntu-24.04
+            configure: ""
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev libx11-dev libxrandr-dev libxinerama-dev \
+            libxcursor-dev libxext-dev libfreetype-dev libgl1-mesa-dev libxcomposite-dev
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release ${{ matrix.configure }}
+
+      - name: Build plugin
+        run: cmake --build build --config Release --target SmoothVT7_All --parallel 4
+
+      - name: Build and run DSP tests
+        run: |
+          cmake --build build --config Release --target dsp_test --parallel 4
+          ctest --test-dir build -C Release --output-on-failure
+
+      - name: Upload plugins
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmoothVT-7-${{ runner.os }}
+          path: |
+            build/SmoothVT7_artefacts/Release/VST3
+            build/SmoothVT7_artefacts/Release/AU
+            build/SmoothVT7_artefacts/Release/Standalone
+          if-no-files-found: warn

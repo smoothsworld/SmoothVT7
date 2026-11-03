@@ -1,0 +1,17 @@
+# build output
+build/
+cmake-build-*/
+out/
+
+# IDE / OS
+.vs/
+.vscode/
+.idea/
+*.xcodeproj/
+*.xcworkspace/
+.DS_Store
+Thumbs.db
+
+# compiled test binaries
+tests/dsp_test
+tests/*.exe

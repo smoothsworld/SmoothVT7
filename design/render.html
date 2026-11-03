@@ -1,0 +1,213 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0B0B10}
+#plate{position:relative;width:1400px;height:650px;overflow:hidden;font-family:FreeSans,Arial,sans-serif}
+svg{position:absolute;left:0;top:0}
+.t{position:absolute;transform:translateX(-50%);white-space:nowrap;font-weight:700;color:#f4ece2;font-size:15px;letter-spacing:.03em}
+.n{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font-weight:700;color:#f4ece2;font-size:11px}
+</style></head><body>
+<div id="plate">
+<svg id="bg" width="1400" height="650" viewBox="0 0 1400 650">
+ <defs>
+  <filter id="brush" x="0" y="0" width="100%" height="100%">
+   <feTurbulence type="fractalNoise" baseFrequency="0.0025 0.75" numOctaves="2" seed="4"/>
+   <feColorMatrix type="saturate" values="0"/>
+   <feComponentTransfer><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer>
+  </filter>
+  <filter id="speck"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9"/><feColorMatrix type="saturate" values="0"/></filter>
+  <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#d7232a"/><stop offset=".08" stop-color="#cc1b22"/><stop offset=".55" stop-color="#bf151c"/><stop offset="1" stop-color="#a91118"/>
+  </linearGradient>
+  <linearGradient id="sheen" x1="0" y1="0" x2="1" y2=".35">
+   <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".38" stop-color="#fff" stop-opacity=".07"/><stop offset=".5" stop-color="#fff" stop-opacity=".13"/><stop offset=".62" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="ear" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#9a0f15"/><stop offset=".2" stop-color="#b5151b"/><stop offset=".8" stop-color="#ad1319"/><stop offset="1" stop-color="#8c0d12"/>
+  </linearGradient>
+  <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#f6f6f4"/><stop offset=".22" stop-color="#b9bab8"/><stop offset=".48" stop-color="#6f706e"/><stop offset=".52" stop-color="#d9dad7"/><stop offset=".8" stop-color="#8e8f8c"/><stop offset="1" stop-color="#4d4e4c"/>
+  </linearGradient>
+ </defs>
+ <rect width="1400" height="650" fill="url(#paint)"/>
+ <rect width="1400" height="650" filter="url(#brush)" opacity=".2" style="mix-blend-mode:overlay"/>
+ <rect width="1400" height="650" filter="url(#speck)" opacity=".05" style="mix-blend-mode:multiply"/>
+ <rect width="1400" height="650" fill="url(#sheen)"/>
+ <!-- ears -->
+ <rect x="0" y="0" width="52" height="650" fill="url(#ear)"/>
+ <rect x="1348" y="0" width="52" height="650" fill="url(#ear)"/>
+ <rect x="0" y="0" width="52" height="650" filter="url(#brush)" opacity=".08" style="mix-blend-mode:overlay"/>
+ <rect x="1348" y="0" width="52" height="650" filter="url(#brush)" opacity=".08" style="mix-blend-mode:overlay"/>
+ <line x1="52.5" y1="0" x2="52.5" y2="650" stroke="#5e080c" stroke-width="1"/><line x1="54" y1="0" x2="54" y2="650" stroke="#e8444a" stroke-opacity=".35"/>
+ <line x1="1347.5" y1="0" x2="1347.5" y2="650" stroke="#5e080c" stroke-width="1"/><line x1="1346" y1="0" x2="1346" y2="650" stroke="#e8444a" stroke-opacity=".35"/>
+ <!-- top/bottom edges -->
+ <rect x="0" y="0" width="1400" height="2" fill="#f06a6f" opacity=".55"/>
+ <rect x="0" y="646" width="1400" height="4" fill="#4a0508" opacity=".6"/>
+ <!-- slots -->
+ <g fill="#140203">
+  <rect x="11" y="52" width="30" height="13" rx="6.5"/><rect x="11" y="585" width="30" height="13" rx="6.5"/>
+  <rect x="1359" y="52" width="30" height="13" rx="6.5"/><rect x="1359" y="585" width="30" height="13" rx="6.5"/>
+ </g>
+ <g fill="none" stroke="#ff8a8e" stroke-opacity=".35">
+  <path d="M12 65.5h28"/><path d="M12 598.5h28"/><path d="M1360 65.5h28"/><path d="M1360 598.5h28"/>
+ </g>
+ <!-- corner hatch -->
+ <g stroke="#ffffff" stroke-opacity=".35" stroke-width="1"><path d="M1322 642L1342 622"/><path d="M1328 642L1342 628"/><path d="M1334 642L1342 634"/></g>
+ <rect width="1400" height="650" fill="none" stroke="#000" stroke-opacity=".0"/>
+ <radialGradient id="vig" cx="50%" cy="45%" r="75%"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></radialGradient><rect width="1400" height="650" fill="url(#vig)"/>
+ <g id="fx"></g>
+</svg>
+
+<div class="t" style="left:84px;top:22px;transform:none;font-size:22px;letter-spacing:.04em">SMOOTH LIFE</div>
+<div class="t" style="left:318px;top:22px;transform:none;font-size:22px">SmoothVT-7</div>
+<div class="t" style="left:504px;top:26px;transform:none;font-size:16px">Vacuum Tube Stereo Compressor</div>
+<div class="t" style="left:1252px;top:28px;font-size:11px">PILOT</div>
+<div class="t" style="left:96px;top:620px;transform:none;font-size:10px;font-weight:400;letter-spacing:.1em;opacity:.75">STEREO &nbsp;·&nbsp; CLASS A TRIODE &nbsp;·&nbsp; PWM GAIN CONTROL &nbsp;·&nbsp; TRANSFORMER I/O</div>
+<div id="L"></div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const BG=location.hash==='#bg';
+const fx=document.getElementById('fx'), P=document.getElementById('plate');
+const deg=a=>a*Math.PI/180;
+let uid=0;
+function svg(s){fx.insertAdjacentHTML('beforeend',s)}
+function txt(x,y,s,cls='n',st=''){P.insertAdjacentHTML('beforeend',`<div class="${cls}" style="left:${x}px;top:${y}px;${st}">${s}</div>`)}
+
+// defs for knobs
+svg(`<defs>
+ <radialGradient id="ktop" cx="45%" cy="38%" r="70%"><stop offset="0" stop-color="#2b2b2c"/><stop offset=".7" stop-color="#1a1a1b"/><stop offset="1" stop-color="#111112"/></radialGradient>
+ <linearGradient id="kskirt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a3b"/><stop offset=".45" stop-color="#151516"/><stop offset="1" stop-color="#050505"/></linearGradient>
+ <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5"/></filter>
+ <radialGradient id="jewel" cx="42%" cy="38%" r="65%"><stop offset="0" stop-color="#fff6d0"/><stop offset=".25" stop-color="#ffc24d"/><stop offset=".65" stop-color="#e2700f"/><stop offset="1" stop-color="#7a2c04"/></radialGradient>
+ <radialGradient id="nut" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#b6b7b4"/><stop offset="1" stop-color="#4f504d"/></radialGradient>
+ <linearGradient id="bat" x1="0" x2="1"><stop offset="0" stop-color="#7d7e7b"/><stop offset=".4" stop-color="#fbfbf9"/><stop offset=".6" stop-color="#c9cac7"/><stop offset="1" stop-color="#5f605d"/></linearGradient>
+ <radialGradient id="face" cx="50%" cy="85%" r="85%"><stop offset="0" stop-color="#fbf3dd"/><stop offset=".6" stop-color="#f1e0b6"/><stop offset="1" stop-color="#d9bd85"/></radialGradient>
+ <radialGradient id="screw" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f2f2f0"/><stop offset=".6" stop-color="#9a9b98"/><stop offset="1" stop-color="#4a4b49"/></radialGradient>
+</defs>`);
+
+function scale(x,y,R,labels,sweep,fs=11,dot=true){
+  const n=labels.length;
+  labels.forEach((l,i)=>{
+    const a=deg(-sweep/2+sweep*i/(n-1)-90);
+    if(dot) svg(`<circle cx="${x+R*Math.cos(a)}" cy="${y+R*Math.sin(a)}" r="1.9" fill="#f4ece2"/>`);
+    if(l!=='') { const LR=R+ (String(l).length>4?24:String(l).length>3?18:12) + (fs>11?2:0);
+      txt(x+LR*Math.cos(a), y+LR*Math.sin(a), l,'n',`font-size:${fs}px`);}
+  });
+}
+function knob(x,y,r,val,sweep=300){ if(BG) return;
+  const a=deg(-sweep/2+sweep*val-90);
+  svg(`<circle cx="${x+1}" cy="${y+4}" r="${r+1}" fill="#3a0204" opacity=".6" filter="url(#shadow)"/>
+   <circle cx="${x}" cy="${y}" r="${r}" fill="url(#kskirt)"/>
+   <circle cx="${x}" cy="${y}" r="${r-1}" fill="none" stroke="#000" stroke-opacity=".7"/>
+   <circle cx="${x}" cy="${y-.5}" r="${r*.86}" fill="url(#ktop)"/>
+   <path d="M${x-r*.84} ${y-1} A${r*.86} ${r*.86} 0 0 1 ${x+r*.84} ${y-1}" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1.2"/>
+   <line x1="${x+r*.2*Math.cos(a)}" y1="${y+r*.2*Math.sin(a)}" x2="${x+r*.8*Math.cos(a)}" y2="${y+r*.8*Math.sin(a)}" stroke="#f7f4ee" stroke-width="${Math.max(2.6,r/10)}" stroke-linecap="round"/>`);
+}
+function chicken(x,y,r,val,sweep){ if(BG) return;
+  const a=deg(-sweep/2+sweep*val-90), L=r*1.45, w=r*.5;
+  const ca=Math.cos(a), sa=Math.sin(a), px=-sa, py=ca;
+  const tip=[x+L*ca,y+L*sa], b1=[x+w*px,y+w*py], b2=[x-w*px,y-w*py], back=[x-r*.75*ca,y-r*.75*sa];
+  const m1=[x+L*.55*ca+w*.42*px, y+L*.55*sa+w*.42*py], m2=[x+L*.55*ca-w*.42*px, y+L*.55*sa-w*.42*py];
+  svg(`<circle cx="${x+1}" cy="${y+4}" r="${r*.95}" fill="#3a0204" opacity=".55" filter="url(#shadow)"/>
+   <path d="M${b1} Q${m1} ${tip} Q${m2} ${b2} Q${back[0]-w*px*1.1} ${back[1]-w*py*1.1} ${back} Q${back[0]+w*px*1.1} ${back[1]+w*py*1.1} ${b1}Z" fill="url(#kskirt)" stroke="#000" stroke-opacity=".8"/>
+   <circle cx="${x}" cy="${y}" r="${r*.66}" fill="url(#ktop)" stroke="#000" stroke-opacity=".8"/>
+   <line x1="${x+r*.95*ca}" y1="${y+r*.95*sa}" x2="${x+L*.88*ca}" y2="${y+L*.88*sa}" stroke="#f7f4ee" stroke-width="2" stroke-linecap="round" opacity=".9"/>`);
+}
+function title(x,y,s,fs=15){txt(x,y,s,'t',`font-size:${fs}px`)}
+function toggle(x,y,up,lt,rt){
+  if(!BG) svg(`<circle cx="${x}" cy="${y+3}" r="15" fill="#3a0204" opacity=".5" filter="url(#shadow)"/>
+   <circle cx="${x}" cy="${y}" r="14" fill="url(#nut)" stroke="#3a0a0a" stroke-width=".8"/>
+   <polygon points="${[0,1,2,3,4,5].map(i=>{const a=deg(60*i+30);return (x+9*Math.cos(a))+','+(y+9*Math.sin(a))}).join(' ')}" fill="url(#nut)" stroke="#555" stroke-width=".6"/>
+   <circle cx="${x}" cy="${y}" r="4.5" fill="#2a2a28"/>
+   <path d="M${x-3} ${y} L${x-4.5} ${up?y-24:y+24} L${x+4.5} ${up?y-24:y+24} L${x+3} ${y}Z" fill="url(#bat)" stroke="#444" stroke-width=".5"/>
+   <ellipse cx="${x}" cy="${up?y-24:y+24}" rx="5" ry="3.2" fill="#f2f2ef" stroke="#555" stroke-width=".5"/>`);
+  txt(x-30,y-22,lt,'n','font-size:12px');txt(x+30,y-22,rt,'n','font-size:12px');
+}
+function vu(x,y,w,h,needle,label){
+  const cx=x+w/2, cy=y+h+6, R=h*.80;
+  svg(`<rect x="${x-10}" y="${y-10}" width="${w+20}" height="${h+20}" rx="9" fill="#3a0204" opacity=".5" filter="url(#shadow)"/>
+   <rect x="${x-10}" y="${y-10}" width="${w+20}" height="${h+20}" rx="9" fill="url(#chrome)"/>
+   <rect x="${x-6}" y="${y-6}" width="${w+12}" height="${h+12}" rx="6" fill="#141414"/>
+   <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="url(#face)"/>
+   <clipPath id="vc${++uid}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3"/></clipPath>`);
+  let g='';const Pt=(d,r)=>[cx+r*Math.sin(deg(d)),cy-r*Math.cos(deg(d))];
+  const marks=[['-20',-46],['-10',-33],['-7',-24],['-5',-16],['-3',-6],['-1',5],['0',13],['+1',22],['+2',31],['+3',42]];
+  g+=`<path d="M${Pt(-46,R)} A${R} ${R} 0 0 1 ${Pt(13,R)}" stroke="#222" stroke-width="1.3" fill="none"/>`;
+  g+=`<path d="M${Pt(13,R+2)} A${R+2} ${R+2} 0 0 1 ${Pt(42,R+2)}" stroke="#b3171d" stroke-width="5" fill="none"/>`;
+  for(let d=-46;d<=42;d+=3.5)g+=`<line x1="${Pt(d,R-5)[0]}" y1="${Pt(d,R-5)[1]}" x2="${Pt(d,R)[0]}" y2="${Pt(d,R)[1]}" stroke="#222" stroke-width=".7"/>`;
+  marks.forEach(([l,d])=>{const c=d>=13?'#b3171d':'#1d1d1d';g+=`<line x1="${Pt(d,R)[0]}" y1="${Pt(d,R)[1]}" x2="${Pt(d,R+8)[0]}" y2="${Pt(d,R+8)[1]}" stroke="${c}" stroke-width="1.5"/><text x="${Pt(d,R+18)[0]}" y="${Pt(d,R+18)[1]+4}" font-family="FreeSans" font-weight="700" font-size="11" text-anchor="middle" fill="${c}">${l}</text>`});
+  g+=`<text x="${cx}" y="${y+h*.66}" font-family="FreeSans" font-weight="700" font-size="16" text-anchor="middle" fill="#1d1d1d">VU</text>`;
+  g+=`<text x="${cx}" y="${y+h*.66+16}" font-family="FreeSans" font-size="8.5" letter-spacing="1.5" text-anchor="middle" fill="#4a3a2a">${label}</text>`;
+  if(!BG) g+=`<line x1="${cx}" y1="${cy}" x2="${Pt(needle,R+4)[0]}" y2="${Pt(needle,R+4)[1]}" stroke="#111" stroke-width="1.4"/>`;
+  if(!BG) g+=`<rect x="${cx-34}" y="${y+h-18}" width="68" height="30" rx="4" fill="#1b1b1b"/>`;
+  if(!BG) g+=`<circle cx="${cx}" cy="${y+h-8}" r="4" fill="url(#screw)"/><line x1="${cx-3}" y1="${y+h-8}" x2="${cx+3}" y2="${y+h-8}" stroke="#333" stroke-width="1"/>`;
+  svg(`<g clip-path="url(#vc${uid})">${g}${BG?"":`<rect x="${x}" y="${y}" width="${w}" height="${h*.45}" fill="#fff" opacity=".10"/>`}</g>`);
+}
+function screw(x,y){svg(`<circle cx="${x}" cy="${y+1}" r="6" fill="#3a0204" opacity=".5"/><circle cx="${x}" cy="${y}" r="5.5" fill="url(#screw)"/><path d="M${x-3.2} ${y}h6.4M${x} ${y-3.2}v6.4" stroke="#333" stroke-width="1.2"/>`)}
+
+// pilot lamp
+svg(`<circle cx="1306" cy="40" r="22" fill="#3a0204" opacity=".5" filter="url(#shadow)"/>
+<circle cx="1306" cy="38" r="21" fill="url(#chrome)"/><circle cx="1306" cy="38" r="16" fill="#2b1206"/>
+<circle cx="1306" cy="38" r="14.5" fill="url(#jewel)"/>
+<g stroke="#fff3cf" stroke-opacity=".35" fill="none"><path d="M1296 33l10-6 10 6"/><path d="M1296 43l10 6 10-6"/><path d="M1306 27v22"/></g>
+<circle cx="1306" cy="38" r="26" fill="#ff9a2a" opacity=".18" filter="url(#shadow)"/>
+<ellipse cx="1301" cy="32" rx="5" ry="3" fill="#fff" opacity=".7"/>`);
+// header tube badge
+svg(`<g transform="translate(476,18)"><rect x="3" y="30" width="14" height="5" rx="1" fill="#2a1a10"/><path d="M4 30V10Q4 2 10 2Q16 2 16 10V30Z" fill="#f3d9a6" stroke="#6a3a0c" stroke-width="1"/><rect x="7.5" y="10" width="5" height="15" fill="#e08a1c"/><path d="M6 6Q10 3 14 6" stroke="#fff" stroke-opacity=".7" fill="none"/></g>`);
+
+// ===== channels =====
+function channel(side,v){
+  const M=x=>side==='L'?x:1400-x;
+  const mx=side==='L'?96:1400-96-236;
+  vu(mx,104,236,150,v.needle, side==='L'?'CHANNEL 1':'CHANNEL 2');
+  // GR / VU toggle & tube knob under meter
+  toggle(M(138),380,true,'GR','VU');
+  title(M(138),300,'METER',13);
+  // Tube (Harder/Softer) like HF Q
+  title(M(268),300,'TUBE',13);
+  scale(M(268),380,30,['Harder','','','','Softer'],150,11);
+  chicken(M(268),380,19,v.ch,150);
+  // attack/release (top row chicken heads)
+  title(M(410),94,'ATTACK');
+  scale(M(410),178,40,['.5','1','3','10','30','80'],270,11);
+  chicken(M(410),178,26,v.at,270);
+  txt(M(410),238,'ms','n','font-size:10px;opacity:.85');
+  title(M(548),94,'RELEASE');
+  scale(M(548),178,40,['.05','.1','.2','.4','.8','Auto'],270,11);
+  chicken(M(548),178,26,v.rl,270);
+  txt(M(548),238,'sec','n','font-size:10px;opacity:.85');
+  // big knobs
+  title(M(410),282,'THRESHOLD');
+  scale(M(410),380,46,['-40','-30','-24','-18','-12','-6','0'],300,11);
+  knob(M(410),380,34,v.th);
+  title(M(548),282,'GAIN');
+  scale(M(548),380,46,['0','+4','+8','+12','+16','+20'],300,11);
+  knob(M(548),380,34,v.gn);
+}
+channel('L',{needle:-12,ch:.35,at:.4,rl:.6,th:.5,gn:.4});
+channel('R',{needle:-14,ch:.35,at:.4,rl:.6,th:.5,gn:.4});
+
+// center
+title(700,84,'STEREO');
+scale(700,178,40,['Dual','Link','Link HPF'],120,11);
+chicken(700,178,26,.5,120);
+title(700,282,'SC HPF');
+scale(700,380,42,['Off','60','90','120','150','200'],300,11);
+knob(700,380,28,.4);
+screw(700,250);
+
+// bottom row
+const BY=548;
+title(170,474,'MIX',14); scale(170,BY,36,['Dry','','','','','','Wet'],300,11); knob(170,BY,26,.7);
+title(330,474,'LOW CUT',14); scale(330,BY,34,['Off','20','30','40','60','80','120'],270,10); chicken(330,BY,19,.17,270);
+title(470,474,'FILTER',14); toggle(470,BY+4,true,'PRE','POST');
+title(610,474,'HIGH CUT',14); scale(610,BY,34,['8k','10k','12k','14k','16k','18k','Off'],270,10); chicken(610,BY,19,.83,270);
+title(790,474,'OVERSAMPLE',14); scale(790,BY,34,['1×','2×','4×','8×'],150,11); chicken(790,BY,19,.66,150);
+title(950,474,'COMP',14); toggle(950,BY+4,true,'OUT','IN');
+title(1130,474,'OUTPUT LEVEL',14); scale(1130,BY,40,['-9','-6','-3','0','+3','+6','+9'],300,11); knob(1130,BY,28,.5);
+screw(1260,BY);
+</script>
+</body></html>
